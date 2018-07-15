@@ -10,17 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180713175805) do
+ActiveRecord::Schema.define(version: 20180715075837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "home_groups", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_home_groups_on_user_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "student_id", null: false
+    t.bigint "home_group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["home_group_id"], name: "index_students_on_home_group_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,4 +53,5 @@ ActiveRecord::Schema.define(version: 20180713175805) do
   end
 
   add_foreign_key "home_groups", "users"
+  add_foreign_key "students", "home_groups"
 end
