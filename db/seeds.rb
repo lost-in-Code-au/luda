@@ -15,6 +15,13 @@ HOME_GROUP_TITLES.each do | title |
     HomeGroup.create(title: title, user: user)
 end
 
-# STUDENTS_NAMES = 60.times.map{ Faker::StarWars.character }
-# SPLIT = 0.4
-# OFFSET = HOME_GROUP_TITLES.length * SPLIT
+HOME_GROUPS  = HomeGroup.all
+
+HOME_GROUPS.each do | home_group |
+    students = 10.times.map{ Faker::StarWars.character }
+    students.each do | student |
+     newStudent = Student.create(name: student, student_id: Faker::IDNumber.valid, home_group: home_group)   
+     newStudent.save
+     puts newStudent.home_group
+    end
+end

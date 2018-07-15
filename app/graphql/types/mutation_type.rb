@@ -15,4 +15,14 @@ Types::MutationType = GraphQL::ObjectType.define do
       User.first
     }
   end
+
+  # field :home_group do 
+  #   Types::HomeGroupType
+  #   argument :id, !types.ID
+  #   description "Find home_group"
+  #   resolve ->(obj, args, ctx) {
+  #     HomeGroup.find(arg["id"])
+  #   }
+  # end
+  
 end

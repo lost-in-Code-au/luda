@@ -5,12 +5,20 @@ module Types
 
         field :id, !types.ID
         field :title, !types.String 
-        # do # Add to HomeGroup db:table ", null: false"
+        field :user, !UserType
+        field :student, !StudentType
+        #  Example custom reslover in queries!
+        #  field :title, !types.String do
         #     resolve ->(home_group, args, ctx) {
         #          home_group.user.email + '_' + home_group.title
         #     }
         # end
 
-        field :user, !UserType
+        field :students, types[Types::StudentType] do
+            description "A home_group's student"
+            resolve ->(home_group, args, ctx) {
+              home_group.students.all
+            }
+        end
     end
 end

@@ -11,6 +11,13 @@
     }
   end
 
+  field :currentUser do
+    type Types::UserType
+    resolve -> (obj, args, ctx) {
+      ctx[:current_user]
+    }
+  end
+
   field :me, Types::UserType do
     description "The current user"
     resolve ->(user, args, ctx) {
@@ -18,13 +25,38 @@
     }
   end
 
-  field :all_home_groups, types[Types::HomeGroupType] do
-    description "The current user"
-    resolve ->(user, args, ctx) {
-      HomeGroup.all
+  field :home_group, Types::HomeGroupType do
+    description "The current Teacher's home_group"
+    resolve ->(obj, args, ctx) {
+      ctx[:current_user].home_group
     }
   end
 
+  # field :project do
+  #   type Types::ProjectType
+  #   argument :id, !types.ID
+  #   description "Find Project by ID"
+
+  #   resolve -> (obj, arg, ctx) do
+  #     GraphQL::QueryResolver.run(Project, ctx, Types::ProjectType) do
+  #       GlobalID::Locator.locate_signed(arg["id"])
+  #     end
+  #   end
+  # end
+
+  field :student, Types::StudentType do
+    description "A home_group's student"
+    resolve ->(student, args, ctx) {
+      Student.first
+    }
+  end
+
+  field :students, types[Types::StudentType] do
+    description "A home_group's student"
+    resolve ->(student, args, ctx) {
+      Student.all
+    }
+  end
   # Example of how to get an array but from GraphQL-ruby 
   # field :someArray, types[Types::SomeArrayType] do
 end
