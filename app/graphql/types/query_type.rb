@@ -25,10 +25,10 @@
     }
   end
 
-  field :home_group, Types::HomeGroupType do
+  field :home_groups, Types::HomeGroupType do
     description "The current Teacher's home_group"
     resolve ->(obj, args, ctx) {
-      ctx[:current_user].home_group
+      ctx[:current_user].home_groups
     }
   end
 
