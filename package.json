@@ -1,8 +1,13 @@
 {
   "name": "student-records",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@rails/webpacker": "3.5"
+  },
   "scripts": {
     "db:reset": "rake db:drop db:create db:migrate; rails db:seed"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
   }
 }
