@@ -7,12 +7,6 @@ module Types
         field :title, !types.String 
         field :user, !UserType
         field :student, !StudentType
-        #  Example custom reslover in queries!
-        #  field :title, !types.String do
-        #     resolve ->(home_group, args, ctx) {
-        #          home_group.user.email + '_' + home_group.title
-        #     }
-        # end
 
         field :students, types[Types::StudentType] do
             description "A home_group's student"
@@ -22,3 +16,10 @@ module Types
         end
     end
 end
+
+#  Example custom reslover in queries!
+#  field :title, !types.String do
+#     resolve ->(home_group, args, ctx) {
+#          home_group.user.email + '_' + home_group.title
+#     }
+# end

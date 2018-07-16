@@ -8,6 +8,7 @@ module Types
         # field :gpa, !types.String
         
         field :home_group, !HomeGroupType
+        
         field :user, !UserType do
             description "A student's home_group Teacher"
             resolve ->(student, args, ctx) {
