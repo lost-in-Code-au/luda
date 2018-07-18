@@ -2,12 +2,29 @@
   "name": "student-records",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.5"
+    "@rails/webpacker": "3.5",
+    "babel-preset-es2015": "^6.24.1",
+    "react": "^16.4.1",
+    "react-relay": "^1.6.0"
   },
   "scripts": {
-    "db:reset": "rake db:drop db:create db:migrate; rails db:seed"
+    "db:reset": "rake db:drop db:create db:migrate; rails db:seed",
+    "dev": "./bin/webpack-dev-server",
+    "rails": "rails s",
+    "rel": "relay-compiler --watch --src ./app/javascript/v2/ --schema config/webpack/data/schema.graphql"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-jest": "^23.4.0",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-relay": "^1.6.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "webpack-dev-server": "2.11.2"
   }
 }
