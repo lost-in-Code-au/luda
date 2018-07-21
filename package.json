@@ -5,6 +5,7 @@
     "@rails/webpacker": "3.5",
     "babel-preset-es2015": "^6.24.1",
     "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "react-relay": "^1.6.0"
   },
   "scripts": {

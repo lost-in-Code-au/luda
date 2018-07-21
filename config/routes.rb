@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'app/index'
+  # get 'react/root'
+  root to: "react#root"
 
   devise_for :users
 
