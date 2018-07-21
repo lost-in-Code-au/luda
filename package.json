@@ -4,15 +4,19 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "babel-preset-es2015": "^6.24.1",
+    "node": "^10.7.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-relay": "^1.6.0"
+    "react-relay": "^1.6.0",
+    "sync-request": "^6.0.0"
   },
   "scripts": {
     "db:reset": "rake db:drop db:create db:migrate; rails db:seed",
     "dev": "./bin/webpack-dev-server",
     "rails": "rails s",
-    "rel": "relay-compiler --watch --src ./app/javascript/v2/ --schema config/webpack/data/schema.graphql"
+    "rel": "relay-compiler --watch --src ./app/javascript/ --schema config/webpack/data/schema.graphql",
+    "relay": "relay-compiler --watch --src ./app/javascript --schema ./schema.graphql --extensions js jsx",
+    "get-schema": "GRAPHQL_URL='http://localhost:3000' node ./config/webpack/plugins/updateSchema.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -27,6 +31,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "graphql": "^0.13.2",
+    "relay-compiler": "^1.6.0",
     "webpack-dev-server": "2.11.2"
   }
 }
