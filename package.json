@@ -13,9 +13,8 @@
   "scripts": {
     "db:reset": "rake db:drop db:create db:migrate; rails db:seed",
     "dev": "./bin/webpack-dev-server",
-    "rails": "rails s",
-    "rel": "relay-compiler --watch --src ./app/javascript/ --schema config/webpack/data/schema.graphql",
-    "relay": "relay-compiler --watch --src ./app/javascript --schema ./schema.graphql --extensions js jsx",
+    "rails": "bundle exec rails s",
+    "relay": "relay-compiler --watch --src ./app/javascript --schema ./webpack/data/schema.graphql --extensions js jsx",
     "get-schema": "GRAPHQL_URL='http://localhost:3000' node ./config/webpack/plugins/updateSchema.js"
   },
   "devDependencies": {
